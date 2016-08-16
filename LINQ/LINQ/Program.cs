@@ -31,6 +31,7 @@ namespace LINQ
             LastNameIsGarica(students);
             FirstNameStartWithH(students);
             FirstNameAlphabetical(students);
+            FirstNameFirstOrDefalut(students);
         }
 
 
@@ -56,6 +57,15 @@ namespace LINQ
             var firstNameAlphabetical = student.OrderBy(s => s.First);
             Console.WriteLine();
             firstNameAlphabetical.ToList().ListStudents();
+        }
+
+        //Q06
+        public static void FirstNameFirstOrDefalut(List<Student> student)
+        {
+            var firstNameAlphabetical = student.OrderBy(s => s.First);
+            var firstStudentFirstName = firstNameAlphabetical.FirstOrDefault();
+            Console.WriteLine();
+            Console.WriteLine(firstStudentFirstName.ToString());
         }
 
     }
