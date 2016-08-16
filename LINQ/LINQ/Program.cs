@@ -70,17 +70,17 @@ namespace LINQ
         }
 
         //Q08
-        //TODO Fix This
         public static void GroupingByFirstName(List<Student> student)
         {
-            var studentInGroupByFirstName = from s in student group s by s.First;
+            var studentInGroupByFirstName = from s in student group s by s.First[0];
             Console.WriteLine();
-             foreach (var studentgroups in studentInGroupByFirstName)
+        //Q10
+            foreach (var studentgroups in studentInGroupByFirstName)
             {
                 Console.WriteLine(studentgroups.Key);
-                foreach (Student s in studentInGroupByFirstName)
+                foreach (Student s in studentgroups)
                 {
-                    Console.WriteLine(" {0}, {1}", s.First, s.Last);
+                    Console.WriteLine(" {0} {1}", s.First, s.Last);
                 }
             }
         }
