@@ -32,6 +32,7 @@ namespace LINQ
             FirstNameStartWithH(students);
             FirstNameAlphabetical(students);
             FirstNameFirstOrDefalut(students);
+            GroupingByFirstName(students);
         }
 
 
@@ -66,6 +67,22 @@ namespace LINQ
             var firstStudentFirstName = firstNameAlphabetical.FirstOrDefault();
             Console.WriteLine();
             Console.WriteLine(firstStudentFirstName.ToString());
+        }
+
+        //Q08
+        //TODO Fix This
+        public static void GroupingByFirstName(List<Student> student)
+        {
+            var studentInGroupByFirstName = from s in student group s by s.First;
+            Console.WriteLine();
+             foreach (var studentgroups in studentInGroupByFirstName)
+            {
+                Console.WriteLine(studentgroups.Key);
+                foreach (Student s in studentInGroupByFirstName)
+                {
+                    Console.WriteLine(" {0}, {1}", s.First, s.Last);
+                }
+            }
         }
 
     }
