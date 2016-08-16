@@ -33,6 +33,7 @@ namespace LINQ
             FirstNameAlphabetical(students);
             FirstNameFirstOrDefalut(students);
             GroupingByFirstName(students);
+            StudentAverageTestScore(students);
         }
 
 
@@ -82,6 +83,16 @@ namespace LINQ
                 {
                     Console.WriteLine(" {0} {1}", s.First, s.Last);
                 }
+            }
+        }
+
+        //Q12
+        public static void StudentAverageTestScore(List<Student> student)
+        {
+            Console.WriteLine();
+            foreach (var s in student)
+            {
+                Console.WriteLine(" {0}, {1} Test AVG: {2}", s.Last, s.First, s.Scores.Average());
             }
         }
 
