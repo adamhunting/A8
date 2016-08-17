@@ -34,6 +34,7 @@ namespace LINQ
             FirstNameFirstOrDefalut(students);
             GroupingByFirstName(students);
             StudentAverageTestScore(students);
+            TestAverage(students);
         }
 
 
@@ -92,8 +93,19 @@ namespace LINQ
             Console.WriteLine();
             foreach (var s in student)
             {
-                Console.WriteLine(" {0}, {1} Test AVG: {2}", s.Last, s.First, s.Scores.Average());
+                Console.WriteLine(" {0} {1} Test AVG: {2}", s.Last, s.First, s.Scores.Average());
             }
+        }
+
+        //Q13
+        public static void TestAverage(List<Student> student)
+        {
+            var scoresCount = student.First().Scores.Count;
+            Console.WriteLine();
+            var avgScoreByTest = Enumerable.Range(0, scoresCount).Select(i => student.Average(s => s.Scores[i]));
+            var displayValues = avgScoreByTest.Select(t => String.Format("Test Avg: {0:0.00}", t));
+            var output = string.Join(Environment.NewLine, displayValues);
+            Console.WriteLine(output);
         }
 
     }
