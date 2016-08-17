@@ -43,7 +43,7 @@ namespace LINQ
         {
             var lastNameIsGarica = student.Where(e => e.Last == "Garcia");
             Console.WriteLine();
-            (lastNameIsGarica.ToList()).ListStudents();
+            lastNameIsGarica.ToList().ListStudents();
         }
 
         //Q03
@@ -51,7 +51,7 @@ namespace LINQ
         {
             var firstNameStartsWithH = from s in student where s.First.StartsWith("H") select s;
             Console.WriteLine();
-            firstNameStartsWithH.ToList().ListStudents();
+            firstNameStartsWithH.ListStudents();
         }
 
         //Q04
@@ -68,7 +68,7 @@ namespace LINQ
             var firstNameAlphabetical = student.OrderBy(s => s.First);
             var firstStudentFirstName = firstNameAlphabetical.FirstOrDefault();
             Console.WriteLine();
-            Console.WriteLine(firstStudentFirstName.ToString());
+            Console.WriteLine(firstStudentFirstName?.ToString());
         }
 
         //Q08
@@ -82,7 +82,7 @@ namespace LINQ
                 Console.WriteLine(studentgroups.Key);
                 foreach (Student s in studentgroups)
                 {
-                    Console.WriteLine(" {0} {1}", s.First, s.Last);
+                    Console.WriteLine($" {s}");
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace LINQ
             Console.WriteLine();
             foreach (var s in student)
             {
-                Console.WriteLine(" {0} {1} Test AVG: {2}", s.Last, s.First, s.Scores.Average());
+                Console.WriteLine(" {0} Test AVG: {1}", s, s.Scores.Average());
             }
         }
 
@@ -120,7 +120,7 @@ namespace LINQ
 
         public override string ToString()
         {
-            return $"Fist: {First}, Last: {Last}, ID: {ID}";
+            return $"First: {First}, Last: {Last}, ID: {ID}";
         }
     }
 
@@ -128,6 +128,14 @@ namespace LINQ
     {
         //Q01
         public static void ListStudents(this List<Student> student)
+        {
+            foreach (var x in student)
+            {
+                Console.WriteLine(x.ToString());
+            }
+        }
+
+        public static void ListStudents(this IEnumerable<Student> student)
         {
             foreach (var x in student)
             {
